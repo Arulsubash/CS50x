@@ -1,0 +1,39 @@
+body {
+    color: #212529;
+    font-size: 1rem;
+    font-weight: 400;
+    line-height: 1.5;
+    margin: 0;
+    text-align: left;
+}
+
+#header {
+    background-color: #477bff;
+    color: #fff;
+    padding: 2rem 1rem;
+    text-align: center;
+}
+
+#intro {
+    background-color: #477bff;
+    color: #fff;
+    text-align: center;
+}
+
+#headline {
+    border: 2px solid;
+    text-align: center;
+    background-color:#5CB85C;
+    border-color:#5CB85C;
+}
+
+a {
+    text-decoration: none;
+    margin: 0px 0px 0px 50px;
+    background-color: #D3D3D3;
+}
+
+.in {
+    margin: 30px 0px 0px 0px;
+    background-color: #f4f4f4;
+}

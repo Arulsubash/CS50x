@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+
+<html lang="en">
+    <head>
+        <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500&display=swap" rel="stylesheet">
+        <link href="styles.css" rel="stylesheet">
+        <title>Trivia!</title>
+
+    </head>
+    <body>
+        <div class="header">
+            <h1>Trivia!</h1>
+        </div>
+
+        <div class="container">
+            <div class="section">
+                <h2>Part 1: Multiple Choice </h2>
+                <hr><h3>How many people died in the pahalgam terrorist attack?</h3>
+                <button id="ic1">25</button>
+                <button id="ic2">28</button>
+                <button id="correct">26</button>
+                <button id="ic3">30</button>
+                <p id="a1" ></p>
+            </div>
+
+            <div class="section">
+                <h2>Part 2: Free Response</h2>
+                <hr><h3>What is the date of the incident? format[DD/MM/YYYY]</h3>
+                <form>
+                  <input id ="free"></input>
+                  <input id="sub" type="submit">
+                </form>
+                <p id="a2"></p>
+            </div>
+        </div>
+        <script>
+            document.querySelector('#correct').addEventListener('click',function() {
+                document.querySelector('#correct').style.backgroundColor = "green";
+                document.querySelector('#ic1').style.backgroundColor = "#d9edff";
+                document.querySelector('#ic2').style.backgroundColor = "#d9edff";
+                document.querySelector('#ic3').style.backgroundColor = "#d9edff";
+                document.querySelector('#a1').innerHTML = "Correct";
+            });
+            document.querySelector('#ic1').addEventListener('click',function() {
+                document.querySelector('#ic1').style.backgroundColor = "red";
+                document.querySelector('#correct').style.backgroundColor = "#d9edff";
+                document.querySelector('#ic2').style.backgroundColor = "#d9edff";
+                document.querySelector('#ic3').style.backgroundColor = "#d9edff";
+                document.querySelector('#a1').innerHTML = "Incorrect";
+            });
+            document.querySelector('#ic2').addEventListener('click',function() {
+                document.querySelector('#ic2').style.backgroundColor = "red";
+                document.querySelector('#correct').style.backgroundColor = "#d9edff";
+                document.querySelector('#ic1').style.backgroundColor = "#d9edff";
+                document.querySelector('#ic3').style.backgroundColor = "#d9edff";
+                document.querySelector('#a1').innerHTML = "Incorrect";
+            });
+            document.querySelector('#ic3').addEventListener('click',function() {
+                document.querySelector('#ic3').style.backgroundColor = "red";
+                document.querySelector('#correct').style.backgroundColor = "#d9edff";
+                document.querySelector('#ic1').style.backgroundColor = "#d9edff";
+                document.querySelector('#ic2').style.backgroundColor = "#d9edff";
+                document.querySelector('#a1').innerHTML = "Incorrect";
+            });
+            let correct_answer = "21/04/2025";
+            document.querySelector('#sub').addEventListener('click', function(event) {
+                if(document.querySelector('#free').value == correct_answer) {
+                    document.querySelector('#free').style.backgroundColor = "green";
+                    document.querySelector('#a2').innerHTML = "Correct";
+                }
+                else {
+                    document.querySelector('#free').style.backgroundColor = "red";
+                    document.querySelector('#a2').innerHTML = "InCorrect";
+                }
+                event.preventDefault();
+            });
+        </script>
+    </body>
+</html>
