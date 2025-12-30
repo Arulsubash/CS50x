@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tamil Nadu State Board Results</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #e0e0e0;
+            margin: 0;
+            padding: 0;
+        }
+        header {
+            background-color: #e0e0e0;
+            color: #1e3a8a;
+            text-align: center;
+            padding: 20px;
+            font-size: 24px;
+            font-weight: bold;
+        }
+        .container {
+            max-width: 500px;
+            margin: 40px auto;
+            background: white;
+            padding: 20px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        input[type="text"] {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            border: 2px solid #ccc;
+            border-radius: 4px;
+            font-size: 16px;
+        }
+        button {
+            background-color: #1e3a8a;
+            color: white;
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+            border: none;
+            width: 100%;
+        }
+        button:hover {
+            background-color: #163372;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+        th, td {
+            padding: 12px;
+            text-align: left;
+            border: 1px solid #ddd;
+        }
+        th {
+            background-color: #1e3a8a;
+            color: white;
+        }
+        footer {
+            background-color: #1e3a8a;
+            color: white;
+            text-align: center;
+            padding: 10px;
+            font-size: 14px;
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+        }
+        .center-image {
+            display: block;
+            margin: 0 auto;
+        }
+        #er{
+            background-color: #800080;
+            color: white;
+        }
+    </style>
+</head>
+<body>
+    <header>Government of Tamil Nadu
+        Directorate of Government Examinations</header>
+    <h2 style="text-align: center" id="er">Examination Results</h2>
+    <br>
+    <img src="tn_edu_logo.png" width="150" class="center-image">
+    <div class="container">
+        <form id="resultForm">
+            <label for="rollNumber">Roll Number:</label>
+            <input type="text" id="rollNumber" name="rollNumber" placeholder="Enter your Roll Number" required>
+
+            <label for="dob">Date of Birth:</label>
+            <input type="text" id="dob" name="dob" placeholder="DD/MM/YYYY" required>
+            <p style="text-align: center">All the best</p>
+            <button type="submit">Check Results</button>
+        </form>
+        <div id="resultsContainer" style="display: none;">
+            <table>
+                <p>Name: RAGAVI A</p>
+                <thead>
+                    <tr>
+                        <th>Subject</th>
+                        <th>Internal (25)</th>
+                        <th>External (75)</th>
+                        <th>Total</th>
+                        <th>Pass/Fail</th>
+                    </tr>
+                </thead>
+                <tbody id="marksTableBody"></tbody>
+            </table>
+        </div>
+    </div>
+    <div style="margin-top: 20px; padding: 10px; background-color: #f8f9fa; border: 1px solid #ddd;">
+        <h3>Passing Regulation:</h3>
+        <ul>
+            <li>A student must score at least 30 marks in the External exam (out of 75).</li>
+            <li>If External marks are less than 30, the student fails that subject, regardless of the total marks.</li>
+            <li>Internal marks (out of 25) contribute to the total but do not affect the pass/fail status directly.</li>
+        </ul>
+    </div>
+    <footer>&copy; 2025 Directorate of Government Examinations, Tamil Nadu</footer>
+
+    <script>
+        document.getElementById('resultForm').addEventListener('submit', function(event) {
+            event.preventDefault();
+            const rollNumber = document.getElementById('rollNumber').value.trim();
+            const dob = document.getElementById('dob').value.trim();
+
+            if (rollNumber === '1505299' && dob === '19/04/2008') {
+                const marks = [
+                    { subject: 'Tamil', internal: 25, external: 50, total: 75 },
+                    { subject: 'English', internal: 25, external: 55, total: 80 },
+                    { subject: 'Mathematics', internal: 25, external: 48, total: 73 },
+                    { subject: 'Physics', internal: 25, external: 30, total: 55 },
+                    { subject: 'Chemistry', internal: 25, external: 45, total: 70 },
+                    { subject: 'Computer Science', internal: 25, external: 53, total: 78 }
+                ];
+                displayResults(marks);
+            } else {
+                alert('Invalid Roll Number or Date of Birth. Please try again.');
+            }
+        });
+
+        function displayResults(marks) {
+            const tbody = document.getElementById('marksTableBody');
+            tbody.innerHTML = '';
+
+            let totalInternal = 0;
+            let totalExternal = 0;
+            let grandTotal = 0;
+
+            marks.forEach(m => {
+                totalInternal += m.internal;
+                totalExternal += m.external;
+                grandTotal += m.total;
+
+                // Pass/Fail condition based on External Marks
+                const passFail = m.external >= 30 ? 'Pass' : 'Fail';
+
+                const row = document.createElement('tr');
+                row.innerHTML = `
+                    <td>${m.subject}</td>
+                    <td>${m.internal}</td>
+                    <td>${m.external}</td>
+                    <td>${m.total}</td>
+                    <td style="color: ${passFail === 'Pass' ? 'green' : 'red'};">${passFail}</td>
+                `;
+                tbody.appendChild(row);
+            });
+
+            // Adding Total Marks row
+            const totalRow = document.createElement('tr');
+            totalRow.innerHTML = `
+                <td><strong>Total Marks</strong></td>
+                <td><strong>${totalInternal}</strong></td>
+                <td><strong>${totalExternal}</strong></td>
+                <td><strong>${grandTotal}</strong></td>
+                <td></td>
+            `;
+            tbody.appendChild(totalRow);
+
+            document.getElementById('resultsContainer').style.display = 'block';
+        }
+    </script>
+</body>
+</html>

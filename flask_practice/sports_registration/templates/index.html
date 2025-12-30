@@ -1,0 +1,15 @@
+{% extends "layout.html" %}
+{% block body %}
+  <form action= "/register" method= "post">
+    <input name="name" placeholder="Name" type="text">
+    <select name="sport">
+      <option disabled selected>select</option>
+      <option value= "Cricket">Cricket</option>
+      <option value= "Football">Football</option>
+    </select>
+    <input type= "submit">
+  </form>
+{% endblock %}
+
+
+

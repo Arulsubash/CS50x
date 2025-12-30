@@ -1,0 +1,11 @@
+sort1 uses: Bubble Sort
+
+How do you know?: sorted text file run faster then sort3.
+
+sort2 uses: Merge sort
+
+How do you know?: Random/sorted text file run faster then others.
+
+sort3 uses: selection sort
+
+How do you know?: It was the only option left.
