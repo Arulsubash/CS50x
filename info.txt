@@ -1,0 +1,20 @@
+index:
+   t_value
+   total
+
+buy:
+  quote = stocks
+  data
+  t_cost
+
+history:
+   history
+
+quote:
+register:
+
+sell:
+   share
+
+
+
